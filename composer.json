@@ -1,0 +1,13 @@
+{
+    "name": "tolkam/dump",
+    "description": "Simple variable dumping function",
+    "type": "library",
+    "license": "proprietary",
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": ["src/dump.php"]
+    },
+    "require": {
+        "php": ">=7.0.0"
+    }
+}
