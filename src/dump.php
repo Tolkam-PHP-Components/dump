@@ -8,14 +8,18 @@ use Symfony\Component\VarDumper\VarDumper;
 VarDumper::setHandler(static function ($var) {
     $isCli = PHP_SAPI === 'cli';
     
-    $cloner = new VarCloner();
-    $dumper = $isCli ? new CliDumper() : new HtmlDumper();
+    $cloner = new VarCloner;
+    $dumper = $isCli ? new CliDumper : new HtmlDumper;
     
     if (!$isCli) {
         $theme = getenv('TKM_DUMP_THEME') ?: 'light';
         $maxDepth = getenv('TKM_DUMP_DEPTH') ?: 1;
         $dumper->setTheme($theme);
         $dumper->setDisplayOptions(['maxDepth' => $maxDepth]);
+    }
+    
+    if (!empty(ob_get_status(true))) {
+        ob_end_clean();
     }
     
     $dumper->dump($cloner->cloneVar($var));
