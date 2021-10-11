@@ -11,7 +11,7 @@ If available, see [Usage](#usage) for quick start.
 ## Usage
 
 ````php
-dd('Hello!);
+dd('Hello!');
 ````
 
 ## License
